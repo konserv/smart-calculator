@@ -1,6 +1,7 @@
 class SmartCalculator {
 
   constructor(initialValue) {
+    this.answer=initialValue;
     this.allValues=[];
     this.allValues.push(initialValue);
   }
@@ -8,12 +9,14 @@ class SmartCalculator {
   add(number) {
     this.allValues.push('+');
     this.allValues.push(number);
+    this.answer=this.getAnswer();
     return(this);
   }
   
   subtract(number) {
     this.allValues.push('-');
     this.allValues.push(number);
+    this.answer=this.getAnswer();
     return(this);
   }
 
@@ -26,12 +29,14 @@ class SmartCalculator {
   devide(number) {
     this.allValues.push('/');
     this.allValues.push(number);
+    this.answer=this.getAnswer();
     return(this);
   }
 
   pow(number) {
     this.allValues.push('^');
     this.allValues.push(number);
+    this.answer=this.getAnswer();
     return(this);
   }
   getAnswer() {
@@ -39,7 +44,7 @@ class SmartCalculator {
     for (var key=0; key<this.allValues.length; key++){
       newValues.push(this.allValues[key]);
     }
-    for (var i=newValues.length-1; i>0; i--) {
+    for (var i=0; i<newValues.length; i++) {
         if (newValues[i]=='^') {
             var help=newValues[i-1];
             var num=help;
@@ -86,11 +91,17 @@ class SmartCalculator {
   }
   
 valueOf() {
-    var answer=this.getAnswer();
-    return(answer);
+    return(this.answer);
 }
 
 }
 
 
-module.exports = SmartCalculator;
+
+const calculator = new SmartCalculator(2);
+
+  const value = calculator
+    .add(2)
+    .multiply(2);
+
+  console.log(value);
