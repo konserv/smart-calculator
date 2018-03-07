@@ -1,7 +1,6 @@
 class SmartCalculator {
 
   constructor(initialValue) {
-    this.answer=initialValue;
     this.allValues=[];
     this.allValues.push(initialValue);
   }
@@ -9,14 +8,12 @@ class SmartCalculator {
   add(number) {
     this.allValues.push('+');
     this.allValues.push(number);
-    this.answer=this.getAnswer();
     return(this);
   }
   
   subtract(number) {
     this.allValues.push('-');
     this.allValues.push(number);
-    this.answer=this.getAnswer();
     return(this);
   }
 
@@ -29,14 +26,12 @@ class SmartCalculator {
   devide(number) {
     this.allValues.push('/');
     this.allValues.push(number);
-    this.answer=this.getAnswer();
     return(this);
   }
 
   pow(number) {
     this.allValues.push('^');
     this.allValues.push(number);
-    this.answer=this.getAnswer();
     return(this);
   }
   getAnswer() {
@@ -91,7 +86,8 @@ class SmartCalculator {
   }
   
 valueOf() {
-    return(this.answer);
+    var answer=this.getAnswer();
+    return(answer);
 }
 
 }
